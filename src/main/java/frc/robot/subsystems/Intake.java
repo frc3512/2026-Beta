@@ -8,28 +8,30 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
 
-    private final TalonFX motor = new TalonFX(0); // Put real ID
+    private final TalonFX motor = new TalonFX(101); // Put real ID
 
     public final double INTAKE = 0.5; // Adjust as necessary
     public final double OUTTAKE = -0.5; // Adjust as necessary
     public final double FEEDING = 0.3; // Adjust as necessary
 
     public Intake() {
+
+        // Add Inverted if needed
         motor.setNeutralMode(NeutralModeValue.Brake);
     }
 
     // Add methods to control the intake mechanism here
 
     public Command runIntake() {
-        return run(() -> motor.set(INTAKE));
+        return runOnce(() -> motor.set(INTAKE));
     }
 
     public Command runOuttake() {
-        return run(() -> motor.set(OUTTAKE));
+        return runOnce(() -> motor.set(OUTTAKE));
     }
 
     public Command runFeeding() {
-        return run(() -> motor.set(FEEDING));
+        return runOnce(() -> motor.set(FEEDING));
     }
 
     public Command stopIntake() {

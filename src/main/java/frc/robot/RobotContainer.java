@@ -1,17 +1,21 @@
 package frc.robot;
 
-import static edu.wpi.first.units.Units.*;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RadiansPerSecond;
+import static edu.wpi.first.units.Units.RotationsPerSecond;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -27,6 +31,8 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     public final Intake intake = new Intake();
+    public final Conveyor conveyor = new Conveyor();
+    public final Shooter shooter = new Shooter();
 
     public RobotContainer() {
         configureBindings();
@@ -47,10 +53,34 @@ public class RobotContainer {
         // Reset the field-centric heading on left bumper press.
         controller.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
-        debug.button(1).onTrue(intake.runIntake());
-        debug.button(2).onTrue(intake.runOuttake());
-        debug.button(12).onTrue(intake.stopIntake());
+        debug.button(1).onTrue(intake.runIntake())
+                .onFalse(intake.stopIntake());
 
+        debug.button(2).onTrue(intake.runOuttake())
+                .onFalse(intake.stopIntake());
+
+        debug.button(12).onTrue(conveyor.runConveyor());
+        debug.button(12).onFalse(conveyor.stopConveyor());
+
+        debug.button(7).onTrue(shooter.setShooter(1000));
+        debug.button(8).onTrue(shooter.setShooter(0));
+
+        debug.button(9).onTrue(feed());
+
+    }
+
+    public Command feed() {
+        return Commands.runOnce(() -> {
+            intake.runFeeding();
+            conveyor.runConveyor();
+        });
+    }
+
+    public Command stopFeed() {
+        return Commands.runOnce(() -> {
+            intake.stopIntake();
+            conveyor.stopConveyor();
+        });
     }
 
     public Command getAutonomousCommand() {
