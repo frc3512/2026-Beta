@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
 
-    private final TalonFX motor = new TalonFX(101); // Put real ID
+    private final TalonFX motor = new TalonFX(10); // Put real ID
 
-    public final double INTAKE = 0.5; // Adjust as necessary
-    public final double OUTTAKE = -0.5; // Adjust as necessary
-    public final double FEEDING = 0.3; // Adjust as necessary
+    public final double INTAKE = -0.7; // Adjust as necessary
+    public final double OUTTAKE = 0.7; // Adjust as necessary
+    public final double FEEDING = 0.15; // Adjust as necessary
 
     public Intake() {
 

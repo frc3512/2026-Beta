@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
@@ -29,7 +29,7 @@ public class RobotContainer {
     private final CommandXboxController controller = new CommandXboxController(0);
     private final CommandJoystick debug  = new CommandJoystick(5);
 
-    public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+    public final Drivetrain drivetrain = TunerConstants.createDrivetrain();
     public final Intake intake = new Intake();
     public final Conveyor conveyor = new Conveyor();
     public final Shooter shooter = new Shooter();
@@ -53,14 +53,13 @@ public class RobotContainer {
         // Reset the field-centric heading on left bumper press.
         controller.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
-        debug.button(1).onTrue(intake.runIntake())
-                .onFalse(intake.stopIntake());
+        debug.button(10).onTrue(intake.runIntake());
+        debug.button(11).onTrue(intake.runOuttake());
 
-        debug.button(2).onTrue(intake.runOuttake())
-                .onFalse(intake.stopIntake());
+        debug.button(12).onTrue(intake.stopIntake());
 
-        debug.button(12).onTrue(conveyor.runConveyor());
-        debug.button(12).onFalse(conveyor.stopConveyor());
+        debug.button(1).onTrue(conveyor.runConveyor());
+        debug.button(1).onFalse(conveyor.stopConveyor());
 
         debug.button(7).onTrue(shooter.setShooter(1000));
         debug.button(8).onTrue(shooter.setShooter(0));
