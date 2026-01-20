@@ -11,9 +11,9 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "spin"
+            "pathName": "New Path"
           }
         }
       ]

@@ -176,9 +176,6 @@ public void driveRobotRelative(ChassisSpeeds speeds) {
         return run(() -> this.setControl(request.get()));
     }
 
-    // public Command rotate360Degrees() {
-    //     return applyRequest(() -> new SwerveRequest.RobotCentric().withRotationalRate(Math.PI)).withTimeout(1.78);
-    // }
 
     @Override
     public void periodic() {
