@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Conveyor  extends SubsystemBase {
 
-    private final TalonFX motor = new TalonFX(102); // Put real ID
+    private final TalonFX motor = new TalonFX(11); // Put real ID
 
     public Conveyor() {
 
@@ -18,7 +18,7 @@ public class Conveyor  extends SubsystemBase {
     }
 
     public Command runConveyor() {
-        return run(() -> motor.set(0.5));
+        return run(() -> motor.set(0.8));
     }
 
     public Command stopConveyor() {

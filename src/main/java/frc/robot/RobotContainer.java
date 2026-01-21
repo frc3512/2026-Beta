@@ -18,8 +18,8 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
-    private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
+    private double MaxSpeed = 0.25 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
+    private double MaxAngularRate =  0.25 * RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -53,33 +53,35 @@ public class RobotContainer {
         // Reset the field-centric heading on left bumper press.
         controller.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
-        debug.button(10).onTrue(intake.runIntake());
-        debug.button(11).onTrue(intake.runOuttake());
+        // debug.button(10).onTrue(intake.runIntake());
+        // debug.button(11).onTrue(intake.runOuttake());
 
-        debug.button(12).onTrue(intake.stopIntake());
+        // debug.button(12).onTrue(intake.stopIntake());
 
         debug.button(1).onTrue(conveyor.runConveyor());
         debug.button(1).onFalse(conveyor.stopConveyor());
 
-        debug.button(7).onTrue(shooter.setShooter(1000));
+        debug.button(7).onTrue(shooter.setShooter(0.63));
         debug.button(8).onTrue(shooter.setShooter(0));
 
-        debug.button(9).onTrue(feed());
+        debug.button(9)
+            .onTrue(feed())
+            .onFalse(stopFeed());
 
     }
 
     public Command feed() {
-        return Commands.runOnce(() -> {
-            intake.runFeeding();
-            conveyor.runConveyor();
-        });
+        return Commands.runOnce(() -> 
+            // intake.runFeeding();
+            conveyor.runConveyor()
+        );
     }
 
     public Command stopFeed() {
-        return Commands.runOnce(() -> {
-            intake.stopIntake();
-            conveyor.stopConveyor();
-        });
+        return Commands.runOnce(() ->
+            // intake.stopIntake();
+            conveyor.stopConveyor()
+        );
     }
 
     public Command getAutonomousCommand() {
