@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5732667617689007,
-        "y": 2.6182168330955777
+        "x": 3.09453637660485,
+        "y": 3.950898716119829
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.573266761768902,
-        "y": 2.6182168330955777
+        "x": 2.732253922967189,
+        "y": 3.937960057061342
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.656390870185448,
-        "y": 2.592339514978602
+        "x": 1.5807132667617685,
+        "y": 4.041469329529244
       },
       "prevControl": {
-        "x": 4.656390870185448,
-        "y": 2.592339514978602
+        "x": 1.852425106990014,
+        "y": 4.054407988587732
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,19 +31,7 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": 1.0,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Spin"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -57,7 +45,7 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "distanceTests",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0
