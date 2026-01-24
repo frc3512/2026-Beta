@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.commands.Rotate360Degrees;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -29,23 +30,19 @@ public class RobotContainer {
     
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     
-    private final SendableChooser<Command> autoChooser = AutoBuilder.buildAutoChooser();
+    public final Rotate360Degrees rotate = new Rotate360Degrees(drivetrain);
     
-    public RobotContainer() {
+    private SendableChooser<Command> autoChooser = AutoBuilder.buildAutoChooser();
+        
+        public RobotContainer() {
 
-        NamedCommands.registerCommand("Spin", rotate360Degrees());
-        new EventTrigger("SpinEvent").whileTrue(rotate360Degrees());
-        
+        NamedCommands.registerCommand("Spin", new Rotate360Degrees(drivetrain));
+
+        autoChooser = AutoBuilder.buildAutoChooser();
+
         configureBindings();
-        
+
         SmartDashboard.putData("Auto Modes", autoChooser);
-    }
-    /**
-     * Returns a command that rotates the robot 360 degrees.
-     * This method creates a command that spins the robot in place for a full rotation.
-     */
-    public Command rotate360Degrees() {
-        return drivetrain.applyRequest(() -> new SwerveRequest.RobotCentric().withRotationalRate(Math.PI)).withTimeout(1.78);
     }
 
 
@@ -66,7 +63,7 @@ public class RobotContainer {
             )
             );
 
-        controller.y().onTrue(rotate360Degrees());
+        controller.y().onTrue(rotate);
         
         controller.x().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
