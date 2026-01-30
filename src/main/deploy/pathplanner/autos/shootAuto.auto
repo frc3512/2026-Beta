@@ -7,13 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "toTowerPath"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Spin"
+            "pathName": "shoot"
           }
         },
         {

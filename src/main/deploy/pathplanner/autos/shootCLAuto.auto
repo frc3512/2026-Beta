@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "toTowerPath"
+            "pathName": "shoot"
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Spin"
+            "pathName": "climbfrCenter"
           }
         },
         {
