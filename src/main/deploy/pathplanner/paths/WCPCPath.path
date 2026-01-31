@@ -102,7 +102,7 @@
     "rotation": -0.7848246029918664
   },
   "reversed": false,
-  "folder": "maybeFolder",
+  "folder": "distanceTests",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 59.93141717813759

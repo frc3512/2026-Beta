@@ -5,12 +5,6 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "Spin"
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "toOutpostPath"
@@ -44,6 +38,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "OutpostInvolved",
   "choreoAuto": false
 }

@@ -13,7 +13,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "toDepotPath"
+            "pathName": "driveDepot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LRDepot"
           }
         },
         {
@@ -44,6 +50,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "depotInvoled",
   "choreoAuto": false
 }

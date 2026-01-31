@@ -29,7 +29,7 @@ public class Rotate360Degrees extends Command {
 
     @Override
     public boolean isFinished() {
-        return timer.hasElapsed(1.78);
+        return timer.hasElapsed(1.825);
     }
 
     @Override
