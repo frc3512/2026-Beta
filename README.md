@@ -1,4 +1,4 @@
-# 2026-Beta — Prototyping & Test Repository
+# 2026-Beta — Pre-robot code
 
 Purpose
 - This repository is dedicated to rapid prototyping and testing of robotics code for the 2026 season.
@@ -19,4 +19,4 @@ Version Management (V.U.R)
 
 This repo is for experimentation and verification: keep it organized, documented, and fast to run so prototypes can be iterated efficiently.
 
-Current Version: 1.2.3
+Current Version: 1.2.4
